@@ -14,6 +14,10 @@ RUN echo "deb [arch=$(dpkg --print-architecture) \
   $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 # Update and install docker-ce-cli
 RUN apt-get update && apt-get install -y docker-ce-cli
+# add nodejs 20 repo
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash
+# install nodejs
+RUN apt install nodejs -y
 # Add Github Labels
 LABEL org.opencontainers.image.source https://github.com/Nightwire/docker-jenkins
 # Switch user to Jenkins
